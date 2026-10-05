@@ -1,0 +1,148 @@
+/* ============================================================================
+   BASLAYOUT: återställning, typografi och sidans grundstruktur.
+   Använder bara variabler från theme.css.
+   Brytpunkt för mobil/dator: 60rem (skriv samma värde i js/core/nav.js om den ändras).
+   ============================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, h2, h3, h4 { line-height: var(--line-height-heading); margin: 0 0 var(--space-3); }
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+p { margin: 0 0 var(--space-4); max-width: var(--measure); }
+ul, ol { margin: 0 0 var(--space-4); padding-left: 1.4em; max-width: var(--measure); }
+li + li { margin-top: var(--space-1); }
+
+a { color: var(--color-primary); text-underline-offset: 0.18em; }
+a:hover { color: var(--color-primary-strong); }
+
+code, pre { font-family: var(--font-mono); font-size: var(--font-size-code); }
+:not(pre) > code {
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.05em 0.35em;
+  overflow-wrap: anywhere;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+main:focus, h1:focus, h2:focus, h3:focus { outline: none; }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3); top: -4rem;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+}
+.skip-link:focus { top: var(--space-3); }
+
+/* ---- Sidans struktur ---- */
+.app { display: block; }
+.app__content { min-width: 0; }
+.app__backdrop {
+  position: fixed; inset: var(--topbar-height) 0 0 0;
+  background: var(--color-backdrop);
+  z-index: 40;
+}
+
+main {
+  display: block;
+  padding: var(--space-6) var(--space-4) var(--space-7);
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+.site-footer {
+  padding: var(--space-5) var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  border-top: 1px solid var(--color-border);
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+.site-footer p { margin: 0; }
+.noscript { padding: var(--space-4); }
+
+/* ---- Toppfält (mobil) ---- */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  height: var(--topbar-height);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  padding: 0 var(--space-4);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.topbar__brand { display: flex; flex-direction: column; line-height: 1.15; text-decoration: none; color: var(--color-text); min-width: 0; }
+.topbar__code { font-weight: var(--font-weight-bold); color: var(--color-primary); font-size: var(--font-size-small); }
+.topbar__title { font-size: var(--font-size-small); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---- Sidomeny: utfälld panel på mobil ---- */
+.sidebar {
+  position: fixed; z-index: 45;
+  top: var(--topbar-height); bottom: 0; left: 0;
+  width: min(var(--sidebar-width), 88vw);
+  overflow-y: auto;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  transform: translateX(-100%);
+  visibility: hidden; /* dolda länkar ska inte gå att tabba till */
+  transition: transform var(--transition), visibility 0s linear 150ms;
+}
+.sidebar.is-open { transform: none; visibility: visible; transition: transform var(--transition), visibility 0s; }
+.sidebar__brand { display: none; }
+body.nav-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .sidebar.is-open { transition: none; }
+}
+
+/* ---- Dator: fast sidomeny och lugn innehållsyta ---- */
+@media (min-width: 60rem) {
+  .topbar, .app__backdrop { display: none !important; }
+  .app { display: grid; grid-template-columns: var(--sidebar-width) minmax(0, 1fr); align-items: start; }
+  .sidebar {
+    position: sticky; top: 0;
+    height: 100vh; width: auto;
+    transform: none; visibility: visible;
+    box-shadow: none;
+    padding: var(--space-5) var(--space-4);
+  }
+  .sidebar__brand {
+    display: flex; flex-direction: column;
+    margin-bottom: var(--space-5);
+    text-decoration: none; color: var(--color-text);
+    line-height: 1.2;
+  }
+  .sidebar__code { font-weight: var(--font-weight-bold); color: var(--color-primary); }
+  .sidebar__title { font-size: var(--font-size-small); color: var(--color-text-muted); }
+  main { padding: var(--space-7) var(--space-6) var(--space-8); }
+  .site-footer { padding-inline: var(--space-6); }
+}

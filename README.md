@@ -58,3 +58,16 @@ Inga Google-taggar och inga externa anrop finns i etapp 1. Integrationspunkterna
 ## Tillgänglighet
 
 Riktiga knappar och länkar, synlig fokusmarkering, tangentbordsstyrning, `aria-current` för aktiv sida och aktuellt flödessteg, textversion av varje flöde, etiketter som alltid har text och symbol utöver färg, och `prefers-reduced-motion` respekteras.
+
+## Enkel webbplats för GitHub Pages (rotmappen)
+
+I rotmappen finns en enkel, statisk webbplats med tre sidor om Google Analytics, Search Console och tillgänglighet:
+
+- `index.html` – Google Analytics 4
+- `search-console.html` – Search Console och indexering
+- `tillganglighet.html` – tillgänglighet
+- `css/` – samma tre CSS-filer som i `src/css/` (`theme.css` styr utseendet)
+- `js/menu.js` – mobilmenyn (sidorna fungerar även utan JavaScript)
+- `sitemap.xml` – lägg till en rad för varje ny sida
+
+Sidorna är vanliga HTML-filer med relativa sökvägar, så de fungerar under `/IHM-analytics/` på GitHub Pages. Aktivera Pages under *Settings → Pages → Deploy from a branch → `main` / `(root)`*. Den tidigare interaktiva siten finns kvar i `src/` och `dist/`.

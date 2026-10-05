@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tillgänglighet på webben · Webbanalys, sökbarhet och tillgänglighet</title>
+  <meta name="description" content="Att alla kan uppfatta, förstå och använda sidan, och hur det hänger ihop med sökbarhet och mätning.">
+  <link rel="canonical" href="https://matteodiamare.github.io/IHM-analytics/tillganglighet.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Analytics, sökbarhet och tillgänglighet</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Analytics, sökbarhet och tillgänglighet. Gå till startsidan">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Analytics, sökbarhet och tillgänglighet</span>
+      </a>
+      <nav id="site-nav" aria-label="Webbplatsens sidor">
+        <div class="nav__group nav__group--single">
+          <span class="visually-hidden" id="nav-pages">Sidor</span>
+          <ul class="nav__list" aria-labelledby="nav-pages"><li><a class="nav__link" href="index.html">Så arbetar du med Google Analytics 4</a></li><li><a class="nav__link" href="search-console.html">Search Console och indexering</a></li><li><a class="nav__link" href="tillganglighet.html" aria-current="page">Tillgänglighet på webben</a></li></ul>
+        </div>
+      </nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Tillgänglighet</p>
+            <h1 class="page-header__title">Tillgänglighet på webben</h1>
+            <p class="page-header__intro">Att alla kan uppfatta, förstå och använda sidan, och hur det hänger ihop med sökbarhet och mätning.</p>
+          </header>
+
+    <section class="block block--text block--note">
+      <p><strong>Tillgänglighet är inte en extra funktion.</strong> Det är kvaliteten på HTML:en, kontrasten, tangentbordsstödet och språket. Sådant som också hjälper sökmotorer och mobilanvändare.</p>
+    </section>
+
+    <section class="block block--section" id="varfor" aria-labelledby="varfor-title">
+      <h2 class="block__title" id="varfor-title">Varför bry sig?</h2>
+      <ul class="block__list"><li><strong>Användare.</strong> Många använder skärmläsare, tangentbord, förstoring eller har svårt att läsa långa, krångliga texter. Det gäller också tillfälliga situationer: solljus, en bruten arm, dålig uppkoppling.</li><li><strong>Krav.</strong> Offentlig sektor i Sverige omfattas av lagen om tillgänglighet till digital offentlig service (DOS-lagen). EU:s tillgänglighetsdirektiv (European Accessibility Act) gäller sedan 28 juni 2025 för vissa produkter och tjänster, till exempel e-handel. Kontrollera vad som gäller din verksamhet.</li><li><strong>Sökbarhet.</strong> Tydliga rubriker, beskrivande länktexter, alternativtexter och snabba, mobilvänliga sidor ger både bättre tillgänglighet och bättre förutsättningar att bli förstådd av sökmotorer.</li></ul>
+    </section>
+
+    <section class="block block--section" id="pour" aria-labelledby="pour-title">
+      <h2 class="block__title" id="pour-title">Fyra principer</h2>
+      <p>WCAG (<em lang="en">Web Content Accessibility Guidelines</em>) är den internationella standarden. Den bygger på fyra principer som ofta förkortas POUR:</p><dl class="glossary">
+        <div class="glossary__item"><dt>Möjlig att uppfatta <span class="glossary__en" lang="en">(perceivable)</span></dt><dd>Informationen går att se, höra eller läsa på något sätt: alternativtext, tillräcklig kontrast, undertexter.</dd></div>
+        <div class="glossary__item"><dt>Hanterbar <span class="glossary__en" lang="en">(operable)</span></dt><dd>Allt går att använda utan mus, med tillräckligt med tid, utan blinkande innehåll som kan ge anfall.</dd></div>
+        <div class="glossary__item"><dt>Begriplig <span class="glossary__en" lang="en">(understandable)</span></dt><dd>Språket anges, texten är läsbar, formulär förklarar fel och navigeringen är förutsägbar.</dd></div>
+        <div class="glossary__item"><dt>Robust <span class="glossary__en" lang="en">(robust)</span></dt><dd>Koden är korrekt nog att fungera i olika webbläsare och hjälpmedel nu och i framtiden.</dd></div>
+        </dl><p class="block__note">Standarden har nivåerna A, AA och AAA. Nivå AA är det som oftast krävs. Aktuell version är WCAG 2.2.</p>
+    </section>
+
+    <section class="block block--section" id="checklista" aria-labelledby="checklista-title">
+      <h2 class="block__title" id="checklista-title">Checklista för att komma igång</h2>
+      <ul class="examples">
+        <li class="example"><h3 class="example__title">Struktur</h3><p>Ange språk (<code>&lt;html lang="sv"&gt;</code>). Ge varje sida en unik <code>&lt;title&gt;</code> och en enda <code>&lt;h1&gt;</code>. Använd rubriknivåer i ordning (h1, h2, h3) och landmärkena <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> och <code>&lt;footer&gt;</code>.</p></li>
+        <li class="example"><h3 class="example__title">Färg och kontrast</h3><p>Normal text behöver kontrastförhållandet 4,5:1 mot bakgrunden, stor text 3:1. Använd aldrig färg som enda sätt att visa något (till exempel röd text för fel utan ikon eller ord).</p></li>
+        <li class="example"><h3 class="example__title">Tangentbord</h3><p>Allt som går att klicka ska gå att nå och använda med Tab, Enter och mellanslag. Fokusmarkeringen ska synas. Erbjud en länk för att hoppa förbi menyn.</p></li>
+        <li class="example"><h3 class="example__title">Bilder</h3><p>Informativa bilder får en beskrivande <code>alt</code>-text. Rent dekorativa bilder får <code>alt=""</code> så att skärmläsaren hoppar över dem. Videoklipp behöver undertexter.</p></li>
+        <li class="example"><h3 class="example__title">Länkar och knappar</h3><p>Länktexten ska säga vart länken leder, inte "klicka här". Använd <code>&lt;a&gt;</code> för att gå någonstans och <code>&lt;button&gt;</code> för att göra något.</p></li>
+        <li class="example"><h3 class="example__title">Formulär</h3><p>Varje fält ska ha en synlig <code>&lt;label&gt;</code> som är kopplad till fältet. Felmeddelanden ska säga vad som är fel och hur det rättas.</p></li>
+        <li class="example"><h3 class="example__title">Zoom och mobil</h3><p>Sidan ska fungera vid 200 % förstoring och på 320 pixlars bredd utan att man behöver skrolla i sidled.</p></li>
+        <li class="example"><h3 class="example__title">Rörelse</h3><p>Respektera inställningen <code>prefers-reduced-motion</code> och starta inte rörelse som inte går att pausa.</p></li>
+        </ul><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Dåligt och bättre</span><span class="code__lang">HTML</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>&lt;!-- Dåligt: länktexten säger ingenting utanför sitt sammanhang --&gt;
+&lt;a href=&quot;rapport.pdf&quot;&gt;Klicka här&lt;/a&gt;
+
+&lt;!-- Bättre --&gt;
+&lt;a href=&quot;rapport.pdf&quot;&gt;Ladda ned rapporten om webbanalys (PDF)&lt;/a&gt;
+
+&lt;!-- Dåligt: en div som beter sig som en knapp --&gt;
+&lt;div onclick=&quot;spara()&quot;&gt;Spara&lt;/div&gt;
+
+&lt;!-- Bättre: en riktig knapp, tangentbordet fungerar utan extra kod --&gt;
+&lt;button type=&quot;button&quot; onclick=&quot;spara()&quot;&gt;Spara&lt;/button&gt;</code></pre>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="hoppa" aria-labelledby="hoppa-title">
+      <h2 class="block__title" id="hoppa-title">Exempel från den här siten</h2>
+      <p>Varje sida här har en länk högst upp som hoppar förbi menyn. Den syns först när man tabbar dit:</p><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Hopplänk och landmärken</span><span class="code__lang">HTML</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>&lt;body&gt;
+  &lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Hoppa till innehållet&lt;/a&gt;
+  &lt;header&gt;…&lt;/header&gt;
+  &lt;nav aria-label=&quot;Webbplatsens sidor&quot;&gt;…&lt;/nav&gt;
+  &lt;main id=&quot;main&quot; tabindex=&quot;-1&quot;&gt;…&lt;/main&gt;
+  &lt;footer&gt;…&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+      <p class="code__note">Aktuell sida i menyn markeras med <code>aria-current="page"</code>, så att skärmläsare också får veta var man är.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="testa" aria-labelledby="testa-title">
+      <h2 class="block__title" id="testa-title">Så testar du</h2>
+      <ol class="block__list"><li><strong>Tangentbord:</strong> lägg undan musen och gå igenom sidan med Tab. Kommer du överallt? Ser du var du är?</li><li><strong>Zoom:</strong> förstora till 200 % och smalna av fönstret till mobilbredd. Hamnar innehåll utanför skärmen?</li><li><strong>Lighthouse</strong> i Chromes utvecklarverktyg (fliken Lighthouse, kategorin Accessibility). Verktyg som <strong>axe DevTools</strong> och <strong>WAVE</strong> hittar fler fel.</li><li><strong>Skärmläsare:</strong> prova <strong>NVDA</strong> (Windows) eller <strong>VoiceOver</strong> (Mac, iPhone). Lyssna på hur en sida läses upp.</li><li><strong>Människor.</strong> Automatiska verktyg hittar bara en del av problemen. Be gärna användare med hjälpmedel testa viktiga flöden.</li></ol>
+    </section>
+
+    <section class="block block--section" id="kopplingar" aria-labelledby="kopplingar-title">
+      <h2 class="block__title" id="kopplingar-title">Hur hänger det ihop med indexering och mätning?</h2>
+      <ul class="block__list"><li><strong>Search Console:</strong> samma saker som är bra för skärmläsaren (rubriker, beskrivande länkar, alternativtexter, korrekt <code>title</code>) gör det lättare för Google att förstå sidan.</li><li><strong>Mobil:</strong> responsiv och zoombar design är både ett tillgänglighetskrav och en förutsättning för mobil-first-indexering.</li><li><strong>Analytics:</strong> samtyckesbanderollen är det första många möter. Om den inte går att använda med tangentbord eller skärmläsare utestängs de från hela sidan, och de syns inte i din statistik heller.</li><li><strong>Mätning kan inte bevisa tillgänglighet.</strong> Att ingen klagar eller att siffrorna ser bra ut betyder inte att alla kan använda sidan. Testa själv.</li></ul>
+    </section>
+
+    <section class="block block--section" id="doc" aria-labelledby="doc-title">
+      <h2 class="block__title" id="doc-title">Läs vidare</h2>
+      <ul class="block__list"><li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C: Web Content Accessibility Guidelines (WCAG)</a></li><li><a href="https://developer.chrome.com/docs/lighthouse/overview">Lighthouse</a></li><li><a href="https://www.digg.se/">Myndigheten för digital förvaltning (Digg)</a>, tillsynsmyndighet för DOS-lagen</li></ul>
+    </section>
+
+          <nav class="page-nav" aria-label="Föregående och nästa sida"><a class="page-nav__link page-nav__link--prev" href="search-console.html" rel="prev"><span class="page-nav__dir">← Föregående</span><span class="page-nav__title">Search Console och indexering</span></a><a class="page-nav__home" href="index.html">Till startsidan</a><span class="page-nav__spacer"></span></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>
