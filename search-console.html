@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Search Console och indexering · Webbanalys, sökbarhet och tillgänglighet</title>
+  <title>Search Console och indexering · S:CDD26H – Teknik för digitala plattformar</title>
   <meta name="description" content="Hur Google hittar, indexerar och visar din webbplats, och vad som påverkar det.">
-  <link rel="canonical" href="https://matteodiamare.github.io/IHM-analytics/search-console.html">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/search-console.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body>
+<body data-page="search-console">
   <a class="skip-link" href="#main">Hoppa till innehållet</a>
 
   <header class="topbar">
     <a class="topbar__brand" href="index.html">
       <span class="topbar__code">S:CDD26H</span>
-      <span class="topbar__title">Analytics, sökbarhet och tillgänglighet</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
     </a>
     <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
       <span aria-hidden="true" class="topbar__menu-icon"></span>
@@ -27,16 +27,12 @@
 
   <div class="app">
     <aside class="sidebar" id="sidebar">
-      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Analytics, sökbarhet och tillgänglighet. Gå till startsidan">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
         <span class="sidebar__code">S:CDD26H</span>
-        <span class="sidebar__title">Analytics, sökbarhet och tillgänglighet</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
       </a>
-      <nav id="site-nav" aria-label="Webbplatsens sidor">
-        <div class="nav__group nav__group--single">
-          <span class="visually-hidden" id="nav-pages">Sidor</span>
-          <ul class="nav__list" aria-labelledby="nav-pages"><li><a class="nav__link" href="index.html">Så arbetar du med Google Analytics 4</a></li><li><a class="nav__link" href="search-console.html" aria-current="page">Search Console och indexering</a></li><li><a class="nav__link" href="tillganglighet.html">Tillgänglighet på webben</a></li></ul>
-        </div>
-      </nav>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
     </aside>
     <div class="app__backdrop" id="backdrop" hidden></div>
 
@@ -44,7 +40,7 @@
       <main id="main" tabindex="-1">
         <article class="page">
           <header class="page-header">
-            <p class="page-header__group">Google Search Console</p>
+            <p class="page-header__group">Analytics och sökbarhet</p>
             <h1 class="page-header__title">Search Console och indexering</h1>
             <p class="page-header__intro">Hur Google hittar, indexerar och visar din webbplats, och vad som påverkar det.</p>
           </header>
@@ -63,7 +59,7 @@
 
     <section class="block block--section" id="verifiera" aria-labelledby="verifiera-title">
       <h2 class="block__title" id="verifiera-title">Kom igång: verifiera att webbplatsen är din</h2>
-      <p>Du lägger till en <strong>egendom</strong> och bevisar att du äger den. Det finns två typer:</p><ul class="block__list"><li><strong>Domän</strong> (kräver kontroll över DNS, en TXT-post). Omfattar alla underdomäner och både <code>http</code> och <code>https</code>.</li><li><strong>Webbadressprefix</strong> (till exempel <code>https://matteodiamare.github.io/IHM-analytics/</code>). Flera verifieringsmetoder, bland annat en HTML-fil eller en metatagg.</li></ul><p>På GitHub Pages styr du inte DNS för <code>github.io</code>, så välj webbadressprefix och en metatagg i <code>&lt;head&gt;</code> på startsidan:</p><figure class="code">
+      <p>Du lägger till en <strong>egendom</strong> och bevisar att du äger den. Det finns två typer:</p><ul class="block__list"><li><strong>Domän</strong> (kräver kontroll över DNS, en TXT-post). Omfattar alla underdomäner och både <code>http</code> och <code>https</code>.</li><li><strong>Webbadressprefix</strong> (till exempel <code>https://scdd26ha.pulsit.online/</code>). Flera verifieringsmetoder, bland annat en HTML-fil eller en metatagg.</li></ul><p>Siten ligger på <code>scdd26ha.pulsit.online</code> och du styr DNS för <code>pulsit.online</code>. Då är <strong>domän</strong>egenskapen enklast: Search Console ger dig en TXT-post som du lägger in hos din DNS-leverantör. Saknar du åtkomst till DNS fungerar webbadressprefix med en metatagg i <code>&lt;head&gt;</code> på startsidan:</p><figure class="code">
       <figcaption class="code__bar"><span class="code__title">Verifiering med metatagg</span><span class="code__lang">HTML</span></figcaption>
       <pre class="code__pre" tabindex="0"><code>&lt;meta name=&quot;google-site-verification&quot; content=&quot;KOD-FRÅN-SEARCH-CONSOLE&quot;&gt;</code></pre>
       <p class="code__note">Koden får du i Search Console när du lägger till egendomen. Håll verifieringen åtskild från besökartracking: verifiera inte via Analytics-taggen om du vill kunna ta bort mätningen utan att tappa åtkomsten.</p>
@@ -94,26 +90,26 @@
         <li class="example"><h3 class="example__title">Intern länkning</h3><p>Sidor som ingen länkar till är svåra att hitta. Använd riktiga <code>&lt;a href&gt;</code>-länkar. Länkar som bara fungerar via JavaScript-klick följs inte alltid.</p></li>
         <li class="example"><h3 class="example__title">Adresser med #</h3><p>För Google är <code>sida#/avsnitt</code> samma adress som <code>sida</code>. En webbplats med hash-routing (<code>#/sida</code>) blir en enda indexerad sida. Därför består den här siten av vanliga HTML-filer med egna adresser.</p></li>
         <li class="example"><h3 class="example__title">noindex</h3><p>Med <code>&lt;meta name="robots" content="noindex"&gt;</code> eller HTTP-huvudet <code>X-Robots-Tag</code> ber du Google att inte indexera sidan. Det är bra för t.ex. interna sidor, men en vanlig olycka när testinställningar följer med ut.</p></li>
-        <li class="example"><h3 class="example__title">robots.txt</h3><p>Styr <em>genomsökning</em>, inte indexering. Blockerar du en sida kan Google inte se att den har <code>noindex</code>. Filen läses bara i adressens rot (<code>host/robots.txt</code>), så på ett GitHub Pages-projekt under <code>/IHM-analytics/</code> har en robots.txt i projektet ingen effekt.</p></li>
+        <li class="example"><h3 class="example__title">robots.txt</h3><p>Styr <em>genomsökning</em>, inte indexering. Blockerar du en sida kan Google inte se att den har <code>noindex</code>. Filen läses bara i adressens rot (<code>host/robots.txt</code>). Här ligger den på <code>https://scdd26ha.pulsit.online/robots.txt</code> och pekar ut sitemapen.</p></li>
         <li class="example"><h3 class="example__title">Canonical</h3><p>Finns samma innehåll på flera adresser pekar du med <code>&lt;link rel="canonical" href="…"&gt;</code> på den du vill ska gälla.</p></li>
         <li class="example"><h3 class="example__title">Titel och beskrivning</h3><p>En unik <code>&lt;title&gt;</code> per sida är viktigt. Beskrivningen (<code>meta description</code>) påverkar inte rankingen direkt men används ofta i sökresultatet.</p></li>
         <li class="example"><h3 class="example__title">Innehållets kvalitet</h3><p>Statusar som <span lang="en">Crawled – currently not indexed</span> beror ofta på tunt, dubblerat eller nästan likadant innehåll. Då hjälper det inte att begära indexering igen: förbättra sidan.</p></li>
         <li class="example"><h3 class="example__title">Mobil och hastighet</h3><p>Google indexerar främst mobilversionen (<em>mobile-first indexing</em>). Innehåll som saknas på mobilen räknas inte. Tung, långsam eller trasig mobilvisning skadar.</p></li>
-        <li class="example"><h3 class="example__title">HTTPS</h3><p>Använd alltid <code>https</code>. GitHub Pages ger dig det automatiskt.</p></li>
+        <li class="example"><h3 class="example__title">HTTPS</h3><p>Använd alltid <code>https</code>. GitHub Pages ger dig det automatiskt när du slår på <em>Enforce HTTPS</em>.</p></li>
         </ul>
     </section>
 
     <section class="block block--section" id="sitemap" aria-labelledby="sitemap-title">
       <h2 class="block__title" id="sitemap-title">Sitemap</h2>
-      <p>En sitemap är en lista över de adresser du vill ska indexeras. Den ersätter inte intern länkning men hjälper Google att upptäcka sidor. Lägg filen i roten av webbplatsen och skicka in adressen under <strong>Sitemaps</strong> i Search Console.</p><figure class="code">
-      <figcaption class="code__bar"><span class="code__title">sitemap.xml för den här siten</span><span class="code__lang">XML</span></figcaption>
+      <p>En sitemap är en lista över de adresser du vill ska indexeras. Den ersätter inte intern länkning men hjälper Google att upptäcka sidor. Lägg filen i roten av webbplatsen, nämn den i <code>robots.txt</code> och skicka in adressen under <strong>Sitemaps</strong> i Search Console.</p><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">sitemap.xml (utdrag)</span><span class="code__lang">XML</span></figcaption>
       <pre class="code__pre" tabindex="0"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
-  &lt;url&gt;&lt;loc&gt;https://matteodiamare.github.io/IHM-analytics/&lt;/loc&gt;&lt;/url&gt;
-  &lt;url&gt;&lt;loc&gt;https://matteodiamare.github.io/IHM-analytics/search-console.html&lt;/loc&gt;&lt;/url&gt;
-  &lt;url&gt;&lt;loc&gt;https://matteodiamare.github.io/IHM-analytics/tillganglighet.html&lt;/loc&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://scdd26ha.pulsit.online/&lt;/loc&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://scdd26ha.pulsit.online/search-console.html&lt;/loc&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://scdd26ha.pulsit.online/tillganglighet.html&lt;/loc&gt;&lt;/url&gt;
 &lt;/urlset&gt;</code></pre>
-      <p class="code__note">Filen ligger i repot. Lägg till en rad för varje ny sida.</p>
+      <p class="code__note">Hela filen ligger i repot. Lägg till en rad för varje ny sida. Alla sidor i menyn ska vara med.</p>
     </figure>
     </section>
 
@@ -127,15 +123,15 @@
       <ul class="block__list"><li><a href="https://developers.google.com/search/docs/crawling-indexing">Google Search Central: genomsökning och indexering</a></li><li><a href="https://support.google.com/webmasters/">Hjälp för Search Console</a></li></ul>
     </section>
 
-          <nav class="page-nav" aria-label="Föregående och nästa sida"><a class="page-nav__link page-nav__link--prev" href="index.html" rel="prev"><span class="page-nav__dir">← Föregående</span><span class="page-nav__title">Så arbetar du med Google Analytics 4</span></a><a class="page-nav__home" href="index.html">Till startsidan</a><a class="page-nav__link page-nav__link--next" href="tillganglighet.html" rel="next"><span class="page-nav__dir">Nästa →</span><span class="page-nav__title">Tillgänglighet på webben</span></a></nav>
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
         </article>
       </main>
       <footer class="site-footer">
-        <p>Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
       </footer>
     </div>
   </div>
 
-  <script src="js/menu.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

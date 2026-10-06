@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP, API och Network · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="När webbläsaren behöver något från en server skickar den en request och får en response tillbaka. Det gäller när en sida laddas och när ett formulär skickas. Network-fliken i DevTools visar varje…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/http-api-network.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="http-api-network">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Bygg och förstå</p>
+            <h1 class="page-header__title">HTTP, API och Network</h1>
+            <p class="page-header__intro">När webbläsaren behöver något från en server skickar den en request och får en response tillbaka. Det gäller när en sida laddas och när ett formulär skickas. Network-fliken i DevTools visar varje sådan förfrågan.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Skilja på GET och POST.</li><li>Läsa status, headers och body i Network-fliken.</li><li>Förklara vad ett API och en endpoint är.</li></ul>
+    </section>
+
+    <section class="block block--section" id="begrepp" aria-labelledby="begrepp-title">
+      <h2 class="block__title" id="begrepp-title">Begrepp</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>GET</dt><dd>Hämtar något, till exempel en sida eller en låtlista.</dd></div>
+        <div class="glossary__item"><dt>POST</dt><dd>Skickar data som ska tas emot eller sparas, till exempel ett formulär.</dd></div>
+        <div class="glossary__item"><dt>API</dt><dd>Serverns "dörrar": adresser man kan skicka requests till.</dd></div>
+        <div class="glossary__item"><dt>Endpoint <span class="glossary__en" lang="en">(endpoint)</span></dt><dd>En enskild adress i ett API, till exempel <code>/api/spelhistorik</code>.</dd></div>
+        <div class="glossary__item"><dt>Statuskod <span class="glossary__en" lang="en">(status code)</span></dt><dd>Serverns korta besked, till exempel 200 (gick bra) eller 404 (finns inte).</dd></div>
+        <div class="glossary__item"><dt>Header <span class="glossary__en" lang="en">(header)</span></dt><dd>Extra uppgifter som följer med en request eller response, till exempel <code>Content-Type</code>.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--section" id="delar" aria-labelledby="delar-title">
+      <h2 class="block__title" id="delar-title">Delarna i en request och en response</h2>
+      <ul class="examples">
+        <li class="example"><h3 class="example__title">Request</h3><p>Metod (GET eller POST), adress, headers och ibland en body med data.</p></li>
+        <li class="example"><h3 class="example__title">Response</h3><p>Statuskod, headers och en body med innehållet, till exempel HTML eller JSON.</p></li>
+        </ul><p>Statuskoderna går i grupper: <strong>2xx</strong> gick bra, <strong>3xx</strong> omdirigering, <strong>4xx</strong> klienten gjorde fel (404 saknas), <strong>5xx</strong> servern gjorde fel.</p>
+    </section>
+
+    <section class="block block--section" id="kod" aria-labelledby="kod-title">
+      <h2 class="block__title" id="kod-title">Skicka requests från JavaScript</h2>
+      <figure class="code">
+      <figcaption class="code__bar"><span class="code__title">GET och POST med fetch</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>// Hämta något
+const svar = await fetch(&#x27;/api/spelhistorik&#x27;);
+console.log(svar.status);          // t.ex. 200
+const lista = await svar.json();
+
+// Skicka något
+await fetch(&#x27;/api/spelhistorik&#x27;, {
+  method: &#x27;POST&#x27;,
+  headers: { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; },
+  body: JSON.stringify({ track_id: &#x27;demo-track-01&#x27; })
+});</code></pre>
+      <p class="code__note">Adressen <code>/api/spelhistorik</code> är ett exempel. Den finns bara om det finns en server som svarar där. En ren HTML-sida utan server kan hämta från andra öppna API:er, men inte spara egen data.</p>
+    </figure>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Öppna DevTools och fliken <strong>Network</strong>. Slå på <em>Disable cache</em> och ladda om sidan.</li><li>Filtrera på <strong>Fetch/XHR</strong> för att se anrop som sidans JavaScript gör.</li><li>Klicka på en rad. Läs flikarna <em>Headers</em>, <em>Payload</em> och <em>Response</em>.</li><li>Vilken metod och vilken statuskod har förfrågan? Vad skulle ändras om du skrev fel adress?</li></ol>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

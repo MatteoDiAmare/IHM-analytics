@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript och händelser · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="JavaScript gör att sidan kan reagera. En händelse (event) inträffar, till exempel ett klick, och din kod väljer vad som ska hända. Samma händelser används för att få sidan att fungera och för att…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/javascript-och-handelser.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="javascript-och-handelser">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Bygg och förstå</p>
+            <h1 class="page-header__title">JavaScript och händelser</h1>
+            <p class="page-header__intro">JavaScript gör att sidan kan reagera. En händelse (event) inträffar, till exempel ett klick, och din kod väljer vad som ska hända. Samma händelser används för att få sidan att fungera och för att mäta den.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Redogöra för vad JavaScript används till på webbplatser.</li><li>Lyssna på klick och formulärinskick.</li><li>Skriva ut och undersöka data i Console.</li></ul>
+    </section>
+
+    <section class="block block--section" id="klick" aria-labelledby="klick-title">
+      <h2 class="block__title" id="klick-title">Lyssna på ett klick</h2>
+      <figure class="code">
+      <figcaption class="code__bar"><span class="code__title">En event listener</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>const knapp = document.querySelector(&#x27;#play&#x27;);
+
+knapp.addEventListener(&#x27;click&#x27;, (event) =&gt; {
+  console.log(&#x27;Klick registrerat&#x27;, event.type);
+});</code></pre>
+      <p class="code__note">Scriptet måste köras när knappen finns i sidan. Lägg det sist i <code>&lt;body&gt;</code> eller använd <code>&lt;script defer&gt;</code>.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="formular" aria-labelledby="formular-title">
+      <h2 class="block__title" id="formular-title">Ett formulärinskick</h2>
+      <figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Ta emot ett inskick utan att ladda om sidan</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>const form = document.querySelector(&#x27;#nyhetsbrev&#x27;);
+
+form.addEventListener(&#x27;submit&#x27;, (event) =&gt; {
+  event.preventDefault();                       // hindra sidladdningen
+  const data = new FormData(form);
+  console.log(&#x27;E-post:&#x27;, data.get(&#x27;epost&#x27;));
+})</code></pre>
+      <p class="code__note">Logga inte personuppgifter i riktiga projekt. Här är det bara för att visa var datan finns.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="begrepp" aria-labelledby="begrepp-title">
+      <h2 class="block__title" id="begrepp-title">Begrepp</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>Event <span class="glossary__en" lang="en">(event)</span></dt><dd>Något som händer, som ett klick eller ett inskick.</dd></div>
+        <div class="glossary__item"><dt>Event listener <span class="glossary__en" lang="en">(event listener)</span></dt><dd>Kod som körs när ett visst event inträffar.</dd></div>
+        <div class="glossary__item"><dt>Console</dt><dd>DevTools-flik där du skriver och läser JavaScript direkt.</dd></div>
+        <div class="glossary__item"><dt>Callback <span class="glossary__en" lang="en">(callback)</span></dt><dd>Funktionen som skickas med till <code>addEventListener</code> och körs när eventet inträffar.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Öppna en sida, tryck <kbd>F12</kbd> och välj fliken <strong>Console</strong>.</li><li>Skriv <code>document.title</code> och tryck Enter. Du läser sidans titel.</li><li>Skriv <code>document.querySelectorAll('a').length</code>. Hur många länkar finns det?</li><li>Markera ett element i Elements och skriv <code>$0</code> i Console. Då får du just det elementet.</li></ol>
+    </section>
+
+    <section class="block block--section" id="misstag" aria-labelledby="misstag-title">
+      <h2 class="block__title" id="misstag-title">Vanliga misstag</h2>
+      <ul class="block__list"><li><code>Cannot read properties of null</code>: <code>querySelector</code> hittade inget, ofta för att scriptet körs innan elementet finns eller för att selektorn är felstavad.</li><li>Glömd <code>preventDefault()</code>: formuläret laddar om sidan innan din kod hunnit göra något.</li><li>Att lyssna på fel element. Ett klick på texten i en knapp skickar eventet vidare upp (<em>bubblar</em>), så kontrollera <code>event.target</code> när du är osäker.</li></ul>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

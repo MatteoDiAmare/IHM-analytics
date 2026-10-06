@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Samtycke · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="Samtycke bestämmer vad som får samlas in. Om besökaren tackar nej ska mätningen som kräver samtycke inte starta, och sidan ska fungera som vanligt. Här ser du hur ett val i en samtyckesruta styr…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/samtycke.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="samtycke">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Samla in och förstå data</p>
+            <h1 class="page-header__title">Samtycke</h1>
+            <p class="page-header__intro">Samtycke bestämmer vad som får samlas in. Om besökaren tackar nej ska mätningen som kräver samtycke inte starta, och sidan ska fungera som vanligt. Här ser du hur ett val i en samtyckesruta styr vad koden gör.</p>
+          </header>
+
+    <section class="block block--text block--note">
+      <p>Vilka regler som gäller i ett verkligt fall avgörs av lag och organisation. Här fokuserar vi på hur tekniken följer ett val. Det här är inte juridisk rådgivning.</p>
+    </section>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Förklara hur samtycke styr insamling.</li><li>Se skillnaden i kod och nätverkstrafik mellan tillåten och stoppad insamling.</li><li>Koppla samtycke till cookies och taggar.</li></ul>
+    </section>
+
+    <section class="block block--section" id="begrepp" aria-labelledby="begrepp-title">
+      <h2 class="block__title" id="begrepp-title">Begrepp</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>Samtycke <span class="glossary__en" lang="en">(consent)</span></dt><dd>Besökarens val om vad som får samlas in.</dd></div>
+        <div class="glossary__item"><dt>Samtyckesruta <span class="glossary__en" lang="en">(consent banner)</span></dt><dd>Rutan där besökaren gör sitt val.</dd></div>
+        <div class="glossary__item"><dt>Consent Mode <span class="glossary__en" lang="en">(consent mode)</span></dt><dd>Googles sätt att tala om för Google-taggar vad besökaren har tillåtit.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--section" id="kod" aria-labelledby="kod-title">
+      <h2 class="block__title" id="kod-title">Ladda mätningen först efter ja</h2>
+      <figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Enkel grind med localStorage</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>function startaMatning() {
+  const s = document.createElement(&#x27;script&#x27;);
+  s.async = true;
+  s.src = &#x27;https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX&#x27;;
+  document.head.append(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag(&#x27;js&#x27;, new Date());
+  gtag(&#x27;config&#x27;, &#x27;G-XXXXXXXXXX&#x27;);
+}
+
+if (localStorage.getItem(&#x27;samtycke&#x27;) === &#x27;ja&#x27;) startaMatning();
+
+document.querySelector(&#x27;#acceptera&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  localStorage.setItem(&#x27;samtycke&#x27;, &#x27;ja&#x27;);
+  startaMatning();
+});</code></pre>
+      <p class="code__note">Platshållaren <code>G-XXXXXXXXXX</code> ska bytas mot ett riktigt mätvärdes-ID. Säger besökaren nej laddas ingenting.</p>
+    </figure><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Consent Mode: börja med nej och uppdatera vid ja</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>gtag(&#x27;consent&#x27;, &#x27;default&#x27;, {
+  analytics_storage: &#x27;denied&#x27;,
+  ad_storage: &#x27;denied&#x27;,
+  ad_user_data: &#x27;denied&#x27;,
+  ad_personalization: &#x27;denied&#x27;
+});
+
+// när besökaren har sagt ja till statistik:
+gtag(&#x27;consent&#x27;, &#x27;update&#x27;, { analytics_storage: &#x27;granted&#x27; });</code></pre>
+      <p class="code__note">Standardvärdena måste sättas före Google-taggen laddas.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="ruta" aria-labelledby="ruta-title">
+      <h2 class="block__title" id="ruta-title">En bra samtyckesruta</h2>
+      <ul class="block__list"><li>Att tacka nej ska vara lika lätt som att tacka ja.</li><li>Ingenting som kräver samtycke startar innan valet är gjort.</li><li>Besökaren kan ändra sig senare, till exempel via en länk i sidfoten.</li><li>Rutan går att använda med tangentbord och skärmläsare, se <a href="tillganglighet.html">tillgänglighet</a>.</li></ul>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Öppna DevTools. I <strong>Network</strong>, filtrera på <code>collect</code> eller <code>gtag</code>. Är det några anrop innan du har valt något?</li><li>I <strong>Application → Cookies</strong>: finns det cookies som <code>_ga</code> innan samtycke?</li><li>Tacka ja, titta igen. Vad ändrades i Network och Application?</li><li>Rensa lagringen och tacka nej. Fungerar sidan ändå som vanligt?</li></ol>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tillgänglighet på webben · Webbanalys, sökbarhet och tillgänglighet</title>
+  <title>Tillgänglighet på webben · S:CDD26H – Teknik för digitala plattformar</title>
   <meta name="description" content="Att alla kan uppfatta, förstå och använda sidan, och hur det hänger ihop med sökbarhet och mätning.">
-  <link rel="canonical" href="https://matteodiamare.github.io/IHM-analytics/tillganglighet.html">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/tillganglighet.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body>
+<body data-page="tillganglighet">
   <a class="skip-link" href="#main">Hoppa till innehållet</a>
 
   <header class="topbar">
     <a class="topbar__brand" href="index.html">
       <span class="topbar__code">S:CDD26H</span>
-      <span class="topbar__title">Analytics, sökbarhet och tillgänglighet</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
     </a>
     <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
       <span aria-hidden="true" class="topbar__menu-icon"></span>
@@ -27,16 +27,12 @@
 
   <div class="app">
     <aside class="sidebar" id="sidebar">
-      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Analytics, sökbarhet och tillgänglighet. Gå till startsidan">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
         <span class="sidebar__code">S:CDD26H</span>
-        <span class="sidebar__title">Analytics, sökbarhet och tillgänglighet</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
       </a>
-      <nav id="site-nav" aria-label="Webbplatsens sidor">
-        <div class="nav__group nav__group--single">
-          <span class="visually-hidden" id="nav-pages">Sidor</span>
-          <ul class="nav__list" aria-labelledby="nav-pages"><li><a class="nav__link" href="index.html">Så arbetar du med Google Analytics 4</a></li><li><a class="nav__link" href="search-console.html">Search Console och indexering</a></li><li><a class="nav__link" href="tillganglighet.html" aria-current="page">Tillgänglighet på webben</a></li></ul>
-        </div>
-      </nav>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
     </aside>
     <div class="app__backdrop" id="backdrop" hidden></div>
 
@@ -44,7 +40,7 @@
       <main id="main" tabindex="-1">
         <article class="page">
           <header class="page-header">
-            <p class="page-header__group">Tillgänglighet</p>
+            <p class="page-header__group">Analytics och sökbarhet</p>
             <h1 class="page-header__title">Tillgänglighet på webben</h1>
             <p class="page-header__intro">Att alla kan uppfatta, förstå och använda sidan, och hur det hänger ihop med sökbarhet och mätning.</p>
           </header>
@@ -125,15 +121,15 @@
       <ul class="block__list"><li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C: Web Content Accessibility Guidelines (WCAG)</a></li><li><a href="https://developer.chrome.com/docs/lighthouse/overview">Lighthouse</a></li><li><a href="https://www.digg.se/">Myndigheten för digital förvaltning (Digg)</a>, tillsynsmyndighet för DOS-lagen</li></ul>
     </section>
 
-          <nav class="page-nav" aria-label="Föregående och nästa sida"><a class="page-nav__link page-nav__link--prev" href="search-console.html" rel="prev"><span class="page-nav__dir">← Föregående</span><span class="page-nav__title">Search Console och indexering</span></a><a class="page-nav__home" href="index.html">Till startsidan</a><span class="page-nav__spacer"></span></nav>
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
         </article>
       </main>
       <footer class="site-footer">
-        <p>Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
       </footer>
     </div>
   </div>
 
-  <script src="js/menu.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

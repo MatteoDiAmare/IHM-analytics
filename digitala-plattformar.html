@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digitala plattformar · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="En digital plattform består av det som körs hos användaren (klienten), det som körs hos oss (servern) och data som rör sig mellan dem. Data kan samlas in på båda sidor, så uppbyggnaden är värd att…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/digitala-plattformar.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="digitala-plattformar">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Bygg och förstå</p>
+            <h1 class="page-header__title">Digitala plattformar</h1>
+            <p class="page-header__intro">En digital plattform består av det som körs hos användaren (klienten), det som körs hos oss (servern) och data som rör sig mellan dem. Data kan samlas in på båda sidor, så uppbyggnaden är värd att förstå först.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Beskriva vad klient, server och lagring gör i en webbplats eller app.</li><li>Peka ut var data kan samlas in.</li><li>Koppla musikspelaren, webbshopen och formuläret till plattformens delar.</li></ul>
+    </section>
+
+    <section class="block block--section" id="begrepp" aria-labelledby="begrepp-title">
+      <h2 class="block__title" id="begrepp-title">Begrepp</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>Klient <span class="glossary__en" lang="en">(client)</span></dt><dd>Det som körs hos användaren, oftast webbläsaren eller en app.</dd></div>
+        <div class="glossary__item"><dt>Server <span class="glossary__en" lang="en">(server)</span></dt><dd>Datorn som tar emot requests, sparar data och svarar.</dd></div>
+        <div class="glossary__item"><dt>Lagring <span class="glossary__en" lang="en">(storage)</span></dt><dd>Där data sparas, ofta en databas på servern.</dd></div>
+        <div class="glossary__item"><dt>Webbapp <span class="glossary__en" lang="en">(web app)</span></dt><dd>En app som körs i webbläsaren och öppnas via en adress.</dd></div>
+        <div class="glossary__item"><dt>Nativeapp <span class="glossary__en" lang="en">(native app)</span></dt><dd>En app som installeras på telefonen eller datorn.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--section" id="hanger-ihop" aria-labelledby="hanger-ihop-title">
+      <h2 class="block__title" id="hanger-ihop-title">Så hänger det ihop</h2>
+      <p>Nästan alla webbplatser följer samma väg, oavsett om det är en musikspelare, en webbshop eller ett formulär:</p><ol class="block__list"><li><strong>Användaren</strong> gör något, till exempel klickar på <em>Spela</em>.</li><li><strong>Klienten</strong> (webbläsaren) tar emot klicket och kör kod.</li><li>Klienten skickar en <strong>request</strong> till servern om något ska hämtas eller sparas.</li><li><strong>Servern</strong> kontrollerar förfrågan och utför jobbet.</li><li>Resultatet sparas i <strong>lagringen</strong>, till exempel en databas.</li><li>Servern skickar en <strong>response</strong> och klienten visar vad som hände.</li></ol>
+    </section>
+
+    <section class="block block--section" id="exempel" aria-labelledby="exempel-title">
+      <h2 class="block__title" id="exempel-title">Tre exempel genom hela kursen</h2>
+      <ul class="examples">
+        <li class="example"><h3 class="example__title">Musikspelare</h3><p>Klient: spelaren och knapparna. Server: låtlistan och spelhistoriken. Lagring: databasen med spelade låtar.</p></li>
+        <li class="example"><h3 class="example__title">Webbshop</h3><p>Klient: produktlistan och varukorgen. Server: priser, lager och order. Lagring: ordrar och kunder.</p></li>
+        <li class="example"><h3 class="example__title">Formulär</h3><p>Klient: fälten och kontrollen av dem. Server: tar emot svaren. Lagring: de inskickade uppgifterna.</p></li>
+        </ul>
+    </section>
+
+    <section class="block block--section" id="var-data" aria-labelledby="var-data-title">
+      <h2 class="block__title" id="var-data-title">Var kan data samlas in?</h2>
+      <ul class="examples">
+        <li class="example"><h3 class="example__title">På klienten</h3><p>Det besökaren gör på sidan: klick, scroll, vilken sida som visas, skärmstorlek, språk i webbläsaren.</p></li>
+        <li class="example"><h3 class="example__title">På servern</h3><p>Det som når servern: genomförda köp, inloggningar, requests och deras resultat.</p></li>
+        <li class="example"><h3 class="example__title">I lagringen</h3><p>Det som sparas över tid: historik, ordrar, inställningar.</p></li>
+        </ul><p>Samma händelse syns ofta på flera ställen. Ett köp klickas fram på klienten, men det är servern som vet att ordern verkligen gick igenom. Därför används ofta båda, se <a href="datainsamling-klient-server.html">datainsamling på klient och server</a>.</p>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Öppna en valfri webbplats och tryck <kbd>F12</kbd> för att öppna DevTools. Välj fliken <strong>Network</strong>.</li><li>Ladda om sidan (<kbd>Ctrl/Cmd+R</kbd>). Varje rad är en request från klienten till en server.</li><li>Klicka på en rad och titta på <em>Headers</em> och <em>Response</em>. Vem svarade, och vad skickades tillbaka?</li><li>Räkna hur många olika adresser (domäner) sidan hämtar från. Det är ofta fler än man tror.</li></ol>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

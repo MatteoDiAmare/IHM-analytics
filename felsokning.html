@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Felsökning · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="Felsökning är ett arbetssätt du använder varje dag: ta reda på vad som faktiskt händer, ändra en sak i taget och kontrollera igen. DevTools är din viktigaste hjälp.">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/felsokning.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="felsokning">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Arbeta praktiskt</p>
+            <h1 class="page-header__title">Felsökning</h1>
+            <p class="page-header__intro">Felsökning är ett arbetssätt du använder varje dag: ta reda på vad som faktiskt händer, ändra en sak i taget och kontrollera igen. DevTools är din viktigaste hjälp.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Läsa felmeddelanden i Console.</li><li>Följa en request i Network.</li><li>Kontrollera att en händelse når dataLayer.</li></ul>
+    </section>
+
+    <section class="block block--section" id="arbetssatt" aria-labelledby="arbetssatt-title">
+      <h2 class="block__title" id="arbetssatt-title">Ett arbetssätt</h2>
+      <ol class="block__list"><li><strong>Reproducera.</strong> Gör om det som går fel tills du kan få det att hända varje gång.</li><li><strong>Läs felmeddelandet.</strong> Det säger oftast både vad och var.</li><li><strong>Hitta var kedjan bryts.</strong> Se nedan.</li><li><strong>Ändra en sak åt gången.</strong> Annars vet du inte vad som hjälpte.</li><li><strong>Kontrollera igen</strong> och prova att det gamla felet inte kommer tillbaka.</li></ol>
+    </section>
+
+    <section class="block block--section" id="kedjan" aria-labelledby="kedjan-title">
+      <h2 class="block__title" id="kedjan-title">Felsökningskedjan för mätning</h2>
+      <p>När en mätpunkt saknas, gå längs kedjan och kontrollera ett steg i taget:</p><ol class="block__list"><li><strong>Händelsen:</strong> körs din klick-kod? Lägg en <code>console.log</code> i lyssnaren.</li><li><strong>dataLayer:</strong> skriv <code>dataLayer</code> i Console. Finns händelsen?</li><li><strong>Tagg och trigger:</strong> kördes taggen i GTM:s förhandsgranskning?</li><li><strong>Request:</strong> syns ett anrop i Network (filtrera på <code>collect</code>)? Vilken status har det?</li><li><strong>Samtycke:</strong> har besökaren sagt ja? Annars är det rätt att inget skickas.</li></ol><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Ett första hjälpmedel</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>console.log(&#x27;Nu körs koden här&#x27;, värde);</code></pre>
+      <p class="code__note">Byt <code>värde</code> mot det du vill se. Loggen visar om koden kördes och vad den innehöll.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="fel" aria-labelledby="fel-title">
+      <h2 class="block__title" id="fel-title">Vanliga felmeddelanden</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>Cannot read properties of null</dt><dd>Koden letade efter ett element som inte hittades. Kontrollera selektorn och att scriptet körs efter att elementet finns.</dd></div>
+        <div class="glossary__item"><dt>dataLayer is not defined</dt><dd>Du använder <code>dataLayer</code> innan den skapats. Börja med <code>window.dataLayer = window.dataLayer || [];</code>.</dd></div>
+        <div class="glossary__item"><dt>404 Not Found</dt><dd>Filen eller adressen finns inte. Kontrollera stavning, mappar och stora/små bokstäver. GitHub Pages skiljer på <code>Bild.png</code> och <code>bild.png</code>.</dd></div>
+        <div class="glossary__item"><dt>MIME type ('text/html') is not a supported stylesheet</dt><dd>Webbläsaren väntade sig en CSS-fil men fick en HTML-sida, oftast en felsida. Det är alltså en 404 i förklädnad: adressen till CSS-filen är fel eller filen saknas.</dd></div>
+        <div class="glossary__item"><dt>CORS-fel</dt><dd>Servern du anropar tillåter inte din sida att läsa svaret. Det rättas på servern, inte i webbläsaren.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Öppna Console på en sida och läs alla röda rader. Vilken rad och vilken fil pekar felet på?</li><li>Skriv medvetet fel adress i en <code>fetch</code> och läs felet i Console och statusen i Network.</li><li>Följ kedjan ovan på en sida med mätning: var syns händelsen första gången?</li></ol>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
