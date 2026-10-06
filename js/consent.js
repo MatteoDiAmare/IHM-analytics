@@ -1,20 +1,13 @@
-// Samtycke till statistik och förberedelse för Google Analytics 4.
+// Samtyckesrutan: besökaren väljer ja eller nej till statistik.
 //
-// SÅ KOPPLAR DU IN GOOGLE ANALYTICS
-//   1. Skapa en webbdataström i Google Analytics och kopiera mätvärdes-ID:t (G-XXXXXXXXXX).
-//   2. Skriv in det på raden GA_ID nedan. Det är det enda stället ID:t behöver stå.
-//   3. Publicera och kontrollera: se "Kontrollera" längst ned i den här filen.
-//
-// Så fungerar det:
-//   - Besökaren får en ruta med två lika tydliga val: ja eller nej.
 //   - Valet sparas i en egen cookie (SAMTYCKE_COOKIE) i 180 dagar.
-//   - Google-skriptet laddas BARA efter ja. Säger besökaren nej, eller inte har valt än,
-//     skickas ingenting till Google och inga Analytics-cookies sätts.
+//   - Vid ja anropas startAnalytics() i analytics.js. Vid nej anropas stopAnalytics().
+//     All Google-kod finns i analytics.js, inte här.
+//   - Före valet, och efter nej, skickas ingenting till Google och inga Analytics-cookies sätts.
 //   - "Cookieinställningar" i sidfoten öppnar rutan igen så att valet kan ändras.
 //   - Siten fungerar likadant oavsett val.
-// Använder du Google Tag Manager i stället för gtag.js: byt innehållet i laddaStatistik().
+// analytics.js måste ligga före den här filen i <head> (båda med defer).
 
-const GA_ID = '';                       // t.ex. 'G-ABC123XYZ9'. Tomt = ingen mätning.
 const SAMTYCKE_COOKIE = 'samtycke_statistik';
 const GILTIG_DAGAR = 180;
 
@@ -27,46 +20,14 @@ function sattCookie(namn, varde, dagar) {
   const secure = location.protocol === 'https:' ? '; Secure' : '';
   document.cookie = `${namn}=${encodeURIComponent(varde)}; max-age=${dagar * 86400}; path=/; SameSite=Lax${secure}`;
 }
-function taBortAnalyticsCookies() {
-  // Google sätter cookies som börjar på _ga. Ta bort dem när besökaren säger nej.
-  const doman = location.hostname;
-  for (const c of document.cookie.split('; ')) {
-    const namn = c.split('=')[0];
-    if (!namn.startsWith('_ga')) continue;
-    for (const d of [doman, '.' + doman, '']) {
-      document.cookie = `${namn}=; max-age=0; path=/${d ? '; domain=' + d : ''}`;
-    }
-  }
-}
 
-// ---------- Google Analytics ----------
-window.dataLayer = window.dataLayer || [];
-function gtag() { window.dataLayer.push(arguments); }
-
-// Consent Mode: allt nekat tills besökaren har sagt ja. Måste sättas före Google-taggen laddas.
-gtag('consent', 'default', {
-  analytics_storage: 'denied',
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-});
-
-let statistikLaddad = false;
-function laddaStatistik() {
-  if (!GA_ID) { console.info('Google Analytics: inget mätvärdes-ID är ifyllt i js/consent.js.'); return; }
-  if (statistikLaddad) { gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
-  statistikLaddad = true;
-  const s = document.createElement('script');
-  s.async = true;
-  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
-  document.head.append(s);
-  gtag('js', new Date());
-  gtag('consent', 'update', { analytics_storage: 'granted' });
-  gtag('config', GA_ID);   // skickar sidvisningen (page_view)
+// ---------- Anrop till analytics.js ----------
+function startaStatistik() {
+  if (typeof window.startAnalytics === 'function') window.startAnalytics();
+  else console.warn('analytics.js saknas: lägg <script src="analytics.js" defer></script> före consent.js i <head>.');
 }
 function stoppaStatistik() {
-  if (statistikLaddad) gtag('consent', 'update', { analytics_storage: 'denied' });
-  taBortAnalyticsCookies();
+  if (typeof window.stopAnalytics === 'function') window.stopAnalytics();
 }
 
 // ---------- Rutan ----------
@@ -75,7 +36,7 @@ function stangRuta() { ruta?.remove(); ruta = null; document.body.style.paddingB
 
 function valj(svar) {
   sattCookie(SAMTYCKE_COOKIE, svar, GILTIG_DAGAR);
-  if (svar === 'ja') laddaStatistik(); else stoppaStatistik();
+  if (svar === 'ja') startaStatistik(); else stoppaStatistik();
   stangRuta();
   document.querySelector('.consent-link')?.focus();
 }
@@ -104,8 +65,8 @@ function visaRuta(flyttaFokus = false) {
 
 // ---------- Start ----------
 const sparat = lasCookie(SAMTYCKE_COOKIE);
-if (sparat === 'ja') laddaStatistik();
-else if (sparat === 'nej') taBortAnalyticsCookies();
+if (sparat === 'ja') startaStatistik();
+else if (sparat === 'nej') stoppaStatistik();
 else visaRuta(false);
 
 // Länk i sidfoten för att ändra valet
@@ -118,10 +79,3 @@ if (foot) {
   knapp.addEventListener('click', () => visaRuta(true));
   foot.append(' ', knapp);
 }
-
-// KONTROLLERA
-//   - Öppna siten i ett privat fönster. Rutan ska visas och DevTools → Network ska inte visa några anrop till google.
-//   - Tryck "Nej tack": inga anrop, inga _ga-cookies (Application → Cookies).
-//   - Tryck "Ja": nu syns ett anrop till googletagmanager.com och collect-anrop till google-analytics.com,
-//     och cookies som _ga och _ga_<ID> finns.
-//   - Realtid i Google Analytics ska visa ditt besök efter någon minut.
