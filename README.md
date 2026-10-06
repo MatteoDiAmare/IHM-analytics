@@ -66,6 +66,8 @@ Siten är ren HTML, CSS och JavaScript. Inget byggsteg och ingen Node behövs. D
 - `index.html` – översikt, och en sida per kursmoment (`*.html`)
 - `css/` – tre CSS-filer. `theme.css` styr färger, typsnitt och avstånd för hela siten
 - `js/site.js` – menyn, föregående/nästa och mobilmenyn. **Menyn är listan `MENU` överst i filen**
+- `analytics.js` – Google Analytics 4, med `startAnalytics()` och `stopAnalytics()`. **Skriv ditt mätvärdes-ID (`G-…`) på raden `GA_ID`**. Ska ligga i `<head>` på alla sidor som mäts: `<script src="analytics.js" defer></script>`
+- `js/consent.js` – samtyckesrutan (ja/nej, sparas i cookien `samtycke_statistik`). Vid ja anropas `startAnalytics()`, så mätningen börjar först efter att besökaren sagt ja
 - `sitemap.xml` och `robots.txt` – för sökmotorer. Adresserna ska använda `https://scdd26ha.pulsit.online/`
 
 ### Lägg till en ny sida
