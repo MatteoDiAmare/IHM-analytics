@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verktyg och arbetsflöde · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="Här får verktygen sin plats i arbetet: VS Code för att skriva, terminalen för att köra, localhost för att se sidan lokalt, DevTools för att undersöka och GitHub för att spara och dela.">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/verktyg-och-arbetsflode.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="verktyg-och-arbetsflode">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Arbeta praktiskt</p>
+            <h1 class="page-header__title">Verktyg och arbetsflöde</h1>
+            <p class="page-header__intro">Här får verktygen sin plats i arbetet: VS Code för att skriva, terminalen för att köra, localhost för att se sidan lokalt, DevTools för att undersöka och GitHub för att spara och dela.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Förklara vad varje verktyg används till.</li><li>Öppna ett projekt lokalt och se det i webbläsaren.</li><li>Följa ett vanligt arbetspass från kod till delad version.</li></ul>
+    </section>
+
+    <section class="block block--section" id="arbetspass" aria-labelledby="arbetspass-title">
+      <h2 class="block__title" id="arbetspass-title">Ett vanligt arbetspass</h2>
+      <ol class="block__list"><li><strong>VS Code:</strong> öppna projektmappen och skriv eller ändra filer.</li><li><strong>Se sidan lokalt:</strong> öppna den via en lokal server (se nedan).</li><li><strong>DevTools:</strong> tryck <kbd>F12</kbd> och undersök Elements, Console, Network och Application.</li><li><strong>Git och GitHub:</strong> spara ändringen med en commit och skicka den till GitHub.</li><li><strong>GitHub Pages:</strong> när ändringen ligger på <code>main</code> publiceras sidan automatiskt.</li></ol>
+    </section>
+
+    <section class="block block--section" id="lokalt" aria-labelledby="lokalt-title">
+      <h2 class="block__title" id="lokalt-title">Visa sidan lokalt utan Node</h2>
+      <p>Den här siten är ren HTML, CSS och JavaScript och kräver inget byggsteg. Två enkla sätt att se den lokalt:</p><ul class="block__list"><li>I VS Code: installera tillägget <strong>Live Server</strong> och välj <em>Open with Live Server</em> på <code>index.html</code>.</li><li>Eller dubbelklicka på <code>index.html</code>. Det fungerar för enkla sidor, men vissa webbläsarfunktioner (cookies, <code>fetch</code>) beter sig annorlunda på <code>file://</code> än på en riktig adress, så använd helst en lokal server.</li></ul><p class="block__note">Har du Node installerat går det också: <code>npx http-server</code> i projektmappen startar en lokal server. Det behövs inte för den här siten.</p>
+    </section>
+
+    <section class="block block--section" id="git" aria-labelledby="git-title">
+      <h2 class="block__title" id="git-title">Spara och dela med Git</h2>
+      <figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Tre kommandon i terminalen</span><span class="code__lang">Terminal</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>git add .
+git commit -m &quot;Beskriv vad du ändrade&quot;
+git push</code></pre>
+      <p class="code__note">Git håller reda på ändringar. GitHub är tjänsten där koden lagras. Skriv commit-meddelanden som säger vad som ändrades och varför.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="begrepp" aria-labelledby="begrepp-title">
+      <h2 class="block__title" id="begrepp-title">Begrepp</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>localhost</dt><dd>Adressen till din egen dator. En sida på <code>localhost</code> syns bara för dig.</dd></div>
+        <div class="glossary__item"><dt>DevTools</dt><dd>Webbläsarens verktyg för att undersöka sidor. Öppnas med <kbd>F12</kbd>.</dd></div>
+        <div class="glossary__item"><dt>Git och GitHub</dt><dd>Git håller reda på ändringar. GitHub är tjänsten där koden lagras och delas.</dd></div>
+        <div class="glossary__item"><dt>GitHub Pages</dt><dd>Gratis hosting av statiska sidor direkt från ett repo.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--section" id="flikar" aria-labelledby="flikar-title">
+      <h2 class="block__title" id="flikar-title">DevTools-flikarna i den här kursen</h2>
+      <ul class="examples">
+        <li class="example"><h3 class="example__title">Elements</h3><p>Se och ändra sidans DOM och CSS.</p></li>
+        <li class="example"><h3 class="example__title">Console</h3><p>Läsa felmeddelanden och köra JavaScript.</p></li>
+        <li class="example"><h3 class="example__title">Network</h3><p>Se varje request och response.</p></li>
+        <li class="example"><h3 class="example__title">Application</h3><p>Se cookies, localStorage och sessionStorage.</p></li>
+        </ul>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

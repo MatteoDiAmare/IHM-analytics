@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML, CSS och DOM · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="HTML beskriver vad som finns på sidan, CSS hur det ser ut och DOM är webbläsarens levande modell av sidan som JavaScript kan läsa och ändra. Knappar, länkar och formulär finns här, och det är dem…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/html-css-dom.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="html-css-dom">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Bygg och förstå</p>
+            <h1 class="page-header__title">HTML, CSS och DOM</h1>
+            <p class="page-header__intro">HTML beskriver vad som finns på sidan, CSS hur det ser ut och DOM är webbläsarens levande modell av sidan som JavaScript kan läsa och ändra. Knappar, länkar och formulär finns här, och det är dem som händelser och mätning utgår från.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Skriva enkel HTML med rubriker, länkar, knappar och formulär.</li><li>Läsa sidans DOM i Elements-fliken.</li><li>Förstå att <code>id</code>, <code>class</code> och <code>data-</code>attribut används av både script och taggar.</li></ul>
+    </section>
+
+    <section class="block block--section" id="formular" aria-labelledby="formular-title">
+      <h2 class="block__title" id="formular-title">Ett litet formulär</h2>
+      <figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Ett formulär</span><span class="code__lang">HTML</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>&lt;form id=&quot;nyhetsbrev&quot;&gt;
+  &lt;label for=&quot;epost&quot;&gt;E-post&lt;/label&gt;
+  &lt;input id=&quot;epost&quot; name=&quot;epost&quot; type=&quot;email&quot; required&gt;
+  &lt;button type=&quot;submit&quot;&gt;Prenumerera&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      <p class="code__note">En <code>&lt;label&gt;</code> kopplad med <code>for</code> till fältets <code>id</code> gör formuläret begripligt för skärmläsare och lättare att klicka på.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="tre-roller" aria-labelledby="tre-roller-title">
+      <h2 class="block__title" id="tre-roller-title">Tre roller</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>HTML <span class="glossary__en" lang="en">(markup)</span></dt><dd>Beskriver innehållet och dess struktur: rubriker, stycken, länkar, formulär.</dd></div>
+        <div class="glossary__item"><dt>CSS <span class="glossary__en" lang="en">(styles)</span></dt><dd>Beskriver utseendet: färger, avstånd, layout. Kopplas till element med selektorer.</dd></div>
+        <div class="glossary__item"><dt>DOM <span class="glossary__en" lang="en">(document object model)</span></dt><dd>Webbläsarens träd av element som JavaScript kan läsa och ändra.</dd></div>
+        <div class="glossary__item"><dt>Element <span class="glossary__en" lang="en">(element)</span></dt><dd>En byggsten i HTML, till exempel en knapp eller en rubrik.</dd></div>
+        <div class="glossary__item"><dt>Attribut <span class="glossary__en" lang="en">(attribute)</span></dt><dd>Extra information på ett element, som <code>id</code> eller <code>href</code>.</dd></div>
+        <div class="glossary__item"><dt>Selektor <span class="glossary__en" lang="en">(selector)</span></dt><dd>Ett uttryck som pekar ut element, till exempel <code>#epost</code> eller <code>.knapp</code>.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--section" id="attribut" aria-labelledby="attribut-title">
+      <h2 class="block__title" id="attribut-title">Attribut som både script och mätning använder</h2>
+      <p>Mätning bygger ofta på att kunna peka ut rätt element. Använd <code>id</code> för unika element, <code>class</code> för grupper och egna <code>data-</code>attribut för information som bara finns till för koden:</p><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Ett element som är lätt att hitta och mäta</span><span class="code__lang">HTML</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>&lt;button id=&quot;play&quot; class=&quot;btn&quot; data-track-id=&quot;demo-track-01&quot;&gt;Spela&lt;/button&gt;</code></pre>
+    </figure><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Läs attributet från JavaScript</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>const knapp = document.querySelector(&#x27;#play&#x27;);
+console.log(knapp.dataset.trackId);   // &quot;demo-track-01&quot;</code></pre>
+    </figure>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Högerklicka på en rubrik på valfri sida och välj <strong>Inspektera</strong>. Du hamnar i fliken <strong>Elements</strong>.</li><li>Dubbelklicka på rubrikens text i Elements och skriv något annat. Sidan ändras direkt.</li><li>Klicka på ett element och titta i <em>Styles</em> till höger. Slå av och på en CSS-regel med rutan.</li><li>Ladda om sidan. Ändringarna försvinner: du ändrade webbläsarens DOM, inte filen på servern.</li></ol>
+    </section>
+
+    <section class="block block--section" id="misstag" aria-labelledby="misstag-title">
+      <h2 class="block__title" id="misstag-title">Vanliga misstag</h2>
+      <ul class="block__list"><li>Två element med samma <code>id</code>. Det ska vara unikt, annars hittar scriptet fel element.</li><li>Ett fält utan <code>label</code>. Det blir svårt att använda och svårt att mäta rätt.</li><li>Att förväxla filen med DOM:en. Det som visas i Elements kan skilja sig från källkoden, eftersom JavaScript kan ha ändrat sidan.</li></ul>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

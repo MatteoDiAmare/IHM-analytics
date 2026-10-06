@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datainsamling på klient och server · S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="Data kan samlas in i webbläsaren (klientsidan) eller på servern. Klientsidan ser vad besökaren gör på sidan. Serversidan ser vad som når servern och kan komplettera med data som webbläsaren inte…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/datainsamling-klient-server.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="datainsamling-klient-server">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="index.html">
+      <span class="topbar__code">S:CDD26H</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
+    </a>
+    <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
+      <span aria-hidden="true" class="topbar__menu-icon"></span>
+      <span>Meny</span>
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
+        <span class="sidebar__code">S:CDD26H</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
+      </a>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
+    </aside>
+    <div class="app__backdrop" id="backdrop" hidden></div>
+
+    <div class="app__content" id="content-wrap">
+      <main id="main" tabindex="-1">
+        <article class="page">
+          <header class="page-header">
+            <p class="page-header__group">Samla in och förstå data</p>
+            <h1 class="page-header__title">Datainsamling på klient och server</h1>
+            <p class="page-header__intro">Data kan samlas in i webbläsaren (klientsidan) eller på servern. Klientsidan ser vad besökaren gör på sidan. Serversidan ser vad som når servern och kan komplettera med data som webbläsaren inte har. Ofta används båda.</p>
+          </header>
+
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Det här kan du efteråt</h2>
+      <ul class="block__list"><li>Redogöra för skillnaden mellan klient- och serverinsamling.</li><li>Ge exempel på data som finns på klienten respektive servern.</li><li>Välja var en mätpunkt lämpar sig att ligga.</li></ul>
+    </section>
+
+    <section class="block block--section" id="begrepp" aria-labelledby="begrepp-title">
+      <h2 class="block__title" id="begrepp-title">Begrepp</h2>
+      <dl class="glossary">
+        <div class="glossary__item"><dt>Klientsidan <span class="glossary__en" lang="en">(client-side)</span></dt><dd>Insamling som sker i webbläsaren, till exempel klick och sidvisningar.</dd></div>
+        <div class="glossary__item"><dt>Serversidan <span class="glossary__en" lang="en">(server-side)</span></dt><dd>Insamling som sker på servern, till exempel en genomförd order.</dd></div>
+        <div class="glossary__item"><dt>SDK <span class="glossary__en" lang="en">(software development kit)</span></dt><dd>Färdig kod som en app använder för att prata med en tjänst, ofta för mätning i nativeappar.</dd></div>
+        </dl>
+    </section>
+
+    <section class="block block--section" id="jamfor" aria-labelledby="jamfor-title">
+      <h2 class="block__title" id="jamfor-title">Jämförelse</h2>
+      <ul class="examples">
+        <li class="example"><h3 class="example__title">Klientsidan</h3><p>Fördelar: ser beteende (klick, scroll, sidvisningar), enkel att komma igång med. Nackdelar: kan blockeras av annonsblockerare och webbläsare, kräver samtycke, siffrorna kan missa besökare.</p></li>
+        <li class="example"><h3 class="example__title">Serversidan</h3><p>Fördelar: ser det som verkligen hände (order, betalning), svårare att blockera, bättre kontroll över vad som lämnar din miljö. Nackdelar: mer att bygga och drifta, ser inte beteende i webbläsaren, samtycke gäller fortfarande.</p></li>
+        </ul>
+    </section>
+
+    <section class="block block--section" id="kopp" aria-labelledby="kopp-title">
+      <h2 class="block__title" id="kopp-title">Exempel: samma köp från båda håll</h2>
+      <ol class="block__list"><li><strong>Klient:</strong> besökaren klickar på <em>Betala</em>. Webbläsaren registrerar klicket och kan skicka en mätpunkt.</li><li><strong>Server:</strong> betalningen går igenom och ordern sparas. Bara servern vet säkert att köpet genomfördes.</li><li>Jämför siffrorna. Om klienten visar färre köp än servern har någon besökare blockerat mätningen eller lämnat sidan för tidigt.</li></ol><figure class="code">
+      <figcaption class="code__bar"><span class="code__title">Klienten skickar en mätpunkt till en egen server</span><span class="code__lang">JavaScript</span></figcaption>
+      <pre class="code__pre" tabindex="0"><code>navigator.sendBeacon(&#x27;/collect&#x27;, JSON.stringify({
+  event: &#x27;play_track&#x27;,
+  track_id: &#x27;demo-track-01&#x27;
+}));</code></pre>
+      <p class="code__note"><code>sendBeacon</code> skickar även när besökaren lämnar sidan. Adressen <code>/collect</code> kräver en server som tar emot den. Google Analytics 4 har också ett API (Measurement Protocol) för att skicka händelser från en server.</p>
+    </figure>
+    </section>
+
+    <section class="block block--section" id="sdk" aria-labelledby="sdk-title">
+      <h2 class="block__title" id="sdk-title">Webbappar, nativeappar och SDK</h2>
+      <p>En webbapp körs i webbläsaren och mäts med skript. En nativeapp installeras på telefonen och mäts oftast med en <strong>SDK</strong>, alltså färdig kod från mättjänsten som byggs in i appen. Principen är densamma: en händelse beskrivs och skickas vidare.</p>
+    </section>
+
+    <section class="block block--tryit block--section" id="prova" aria-labelledby="prova-title">
+      <h2 class="block__title" id="prova-title">Prova i webbläsaren</h2>
+      <ol class="block__list"><li>Öppna Network, filtrera på <code>collect</code> och utför en handling på en sida med Google Analytics. Vilken adress skickas anropet till?</li><li>Tänk på en handling på en webbplats, till exempel ett köp. Vilken del av den kan bara klienten se? Vilken del kan bara servern se?</li></ol>
+    </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
+        </article>
+      </main>
+      <footer class="site-footer">
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Så arbetar du med Google Analytics 4 · Webbanalys, sökbarhet och tillgänglighet</title>
-  <meta name="description" content="Mät rätt saker i rätt ordning: från fråga till installation, kontroll och rapport.">
-  <link rel="canonical" href="https://matteodiamare.github.io/IHM-analytics/">
+  <title>S:CDD26H – Teknik för digitala plattformar</title>
+  <meta name="description" content="Här ser du hur en webbplats eller app hänger ihop: vad som händer när någon klickar, hur data rör sig och hur det kan mätas. Du provar i webbläsaren, tittar på vad som hände och bygger sedan…">
+  <link rel="canonical" href="https://scdd26ha.pulsit.online/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <!-- Search Console-verifiering: lägg metataggen här (se sidan om Search Console). Håll den åtskild från besökartracking. -->
 </head>
-<body>
+<body data-page="index">
   <a class="skip-link" href="#main">Hoppa till innehållet</a>
 
   <header class="topbar">
     <a class="topbar__brand" href="index.html">
       <span class="topbar__code">S:CDD26H</span>
-      <span class="topbar__title">Analytics, sökbarhet och tillgänglighet</span>
+      <span class="topbar__title">Teknik för digitala plattformar</span>
     </a>
     <button class="btn topbar__menu-btn" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">
       <span aria-hidden="true" class="topbar__menu-icon"></span>
@@ -28,16 +28,12 @@
 
   <div class="app">
     <aside class="sidebar" id="sidebar">
-      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Analytics, sökbarhet och tillgänglighet. Gå till startsidan">
+      <a class="sidebar__brand" href="index.html" aria-label="S:CDD26H, Teknik för digitala plattformar. Gå till översikten">
         <span class="sidebar__code">S:CDD26H</span>
-        <span class="sidebar__title">Analytics, sökbarhet och tillgänglighet</span>
+        <span class="sidebar__title">Teknik för digitala plattformar</span>
       </a>
-      <nav id="site-nav" aria-label="Webbplatsens sidor">
-        <div class="nav__group nav__group--single">
-          <span class="visually-hidden" id="nav-pages">Sidor</span>
-          <ul class="nav__list" aria-labelledby="nav-pages"><li><a class="nav__link" href="index.html" aria-current="page">Så arbetar du med Google Analytics 4</a></li><li><a class="nav__link" href="search-console.html">Search Console och indexering</a></li><li><a class="nav__link" href="tillganglighet.html">Tillgänglighet på webben</a></li></ul>
-        </div>
-      </nav>
+      <!-- Menyn byggs av js/site.js. Utan JavaScript hittar du alla sidor via korten på översikten. -->
+      <nav id="site-nav" aria-label="Kursmeny"><p><a href="index.html">Till översikten</a></p></nav>
     </aside>
     <div class="app__backdrop" id="backdrop" hidden></div>
 
@@ -45,96 +41,74 @@
       <main id="main" tabindex="-1">
         <article class="page">
           <header class="page-header">
-            <p class="page-header__group">Google Analytics</p>
-            <h1 class="page-header__title">Så arbetar du med Google Analytics 4</h1>
-            <p class="page-header__intro">Mät rätt saker i rätt ordning: från fråga till installation, kontroll och rapport.</p>
+            <p class="page-header__group">Start</p>
+            <h1 class="page-header__title">Teknik för digitala plattformar</h1>
+            <p class="page-header__intro">Här ser du hur en webbplats eller app hänger ihop: vad som händer när någon klickar, hur data rör sig och hur det kan mätas. Du provar i webbläsaren, tittar på vad som hände och bygger sedan vidare själv.</p>
           </header>
 
-    <section class="block block--text block--note">
-      <p><strong>Så läser du sidan.</strong> Exemplen använder platshållaren <code>G-XXXXXXXXXX</code>. Den här webbplatsen mäter ingenting själv. Namn och menyval i Google ändras ofta, så kontrollera mot <a href="https://support.google.com/analytics/">Googles dokumentation för Analytics</a>.</p>
+    <section class="hero">
+      <div class="hero__actions">
+        <a class="btn btn--large btn--primary" href="digitala-plattformar.html">Börja från grunden</a>
+        <a class="btn btn--large" href="#moment">Välj ett moment</a>
+      </div>
     </section>
 
-    <section class="block block--section" id="fraga" aria-labelledby="fraga-title">
-      <h2 class="block__title" id="fraga-title">Börja med en fråga, inte med verktyget</h2>
-      <p>Mätning utan fråga ger rapporter som ingen använder. Skriv ner en enkel mätplan innan du rör inställningarna:</p><ol class="block__list"><li><strong>Vad vill vi veta?</strong> Till exempel: Hittar besökarna kursmaterialet? Var lämnar de sidan?</li><li><strong>Vilken handling visar det?</strong> Sidvisning, nedladdning, klick på en knapp, ifyllt formulär. Varje handling blir en händelse (<em>event</em>).</li><li><strong>Vem fattar vilket beslut utifrån svaret?</strong> Kan ingen svara har du inget att mäta.</li><li><strong>Vad får vi inte samla in?</strong> Personuppgifter och allt som saknar samtycke. Det avgör hur du bygger lösningen, inte tvärtom.</li></ol>
+    <section class="block block--section" id="helhet" aria-labelledby="helhet-title">
+      <h2 class="block__title" id="helhet-title">Kursens helhet: från klick till svar</h2>
+      <p>Det som händer när någon klickar är en kedja. Mätningen sitter bredvid kedjan och lyssnar på samma händelse.</p><h3>Handlingen</h3><ol class="block__list"><li><strong>Användare:</strong> någon vill göra något.</li><li><strong>Handling:</strong> personen klickar eller skickar ett formulär. Webbläsaren registrerar det som en händelse i sidan (DOM).</li><li><strong>JavaScript:</strong> din kod lyssnar på händelsen och bestämmer vad som ska hända.</li><li><strong>Request:</strong> koden skickar en förfrågan till servern.</li><li><strong>Server:</strong> tar emot, kontrollerar och utför jobbet.</li><li><strong>Lagring:</strong> resultatet sparas.</li><li><strong>Response:</strong> servern svarar och sidan visar vad som hände.</li></ol><h3>Mätkedjan</h3><ol class="block__list"><li><strong>Mätpunkt:</strong> händelsen beskrivs i <code>dataLayer</code>.</li><li><strong>Trigger och tagg:</strong> en tagghanterare avgör om och när mätningen körs. Samtycke kan stoppa den.</li><li><strong>Insamling:</strong> uppgifterna når ett mätverktyg och blir underlag för rapporter.</li></ol><section class="block block--text block--note">
+      <p><strong>Tracking är en mätkedja.</strong> Handlingen fungerar också när mätningen saknas eller stoppas, till exempel för att besökaren inte har gett samtycke.</p>
+    </section>
     </section>
 
-    <section class="block block--section" id="uppbyggnad" aria-labelledby="uppbyggnad-title">
-      <h2 class="block__title" id="uppbyggnad-title">Så är GA4 uppbyggt</h2>
-      <dl class="glossary">
-        <div class="glossary__item"><dt>Egendom <span class="glossary__en" lang="en">(property)</span></dt><dd>Behållaren för all data från en eller flera plattformar. Rapporter och inställningar hör till en egendom.</dd></div>
-        <div class="glossary__item"><dt>Dataström <span class="glossary__en" lang="en">(data stream)</span></dt><dd>Källan: en webbplats eller en app. En webbdataström har ett <strong>mätvärdes-ID</strong> som börjar på <code>G-</code>.</dd></div>
-        <div class="glossary__item"><dt>Händelse <span class="glossary__en" lang="en">(event)</span></dt><dd>Det som mäts. I GA4 är allt en händelse, även en sidvisning (<code>page_view</code>).</dd></div>
-        <div class="glossary__item"><dt>Parameter <span class="glossary__en" lang="en">(parameter)</span></dt><dd>Extra information på en händelse, till exempel vilken fil som laddades ned.</dd></div>
-        <div class="glossary__item"><dt>Nyckelhändelse <span class="glossary__en" lang="en">(key event)</span></dt><dd>En händelse du markerar som viktig för verksamheten. Tidigare kallades de konverteringar.</dd></div>
-        <div class="glossary__item"><dt>Dimension och mått <span class="glossary__en" lang="en">(dimension, metric)</span></dt><dd>Dimension beskriver (sida, land, källa). Mått räknar (antal händelser, användare).</dd></div>
-        </dl>
-    </section>
-
-    <section class="block block--section" id="installera" aria-labelledby="installera-title">
-      <h2 class="block__title" id="installera-title">Installera</h2>
-      <ol class="block__list"><li>Skapa ett Analytics-konto och en egendom.</li><li>Skapa en <strong>webbdataström</strong> för webbadressen. Då får du ett mätvärdes-ID.</li><li>Lägg in taggen på sidorna. Antingen med Googles tagg (<code>gtag.js</code>) direkt, eller via <strong>Google Tag Manager</strong> om flera taggar ska hanteras på ett ställe.</li></ol><figure class="code">
-      <figcaption class="code__bar"><span class="code__title">Googles tagg i head på varje sida</span><span class="code__lang">HTML</span></figcaption>
-      <pre class="code__pre" tabindex="0"><code>&lt;!-- Google tag (gtag.js) --&gt;
-&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag(&#x27;js&#x27;, new Date());
-  gtag(&#x27;config&#x27;, &#x27;G-XXXXXXXXXX&#x27;);
-&lt;/script&gt;</code></pre>
-      <p class="code__note">Kopiera alltid exakt kod från Analytics (Admin → Dataströmmar → Visa taggkod). Siten består av flera HTML-filer, så taggen ska in i varje fil. Med samtyckeskrav ska den inte laddas innan besökaren har samtyckt, se avsnittet om samtycke nedan.</p>
-    </figure>
-    </section>
-
-    <section class="block block--section" id="automatiskt" aria-labelledby="automatiskt-title">
-      <h2 class="block__title" id="automatiskt-title">Vad mäts automatiskt?</h2>
-      <p>Med förbättrad mätning (<em>enhanced measurement</em>) skickar GA4 flera händelser utan extra kod. Vilka som är på styrs per dataström:</p><ul class="block__list"><li><code>page_view</code>: sidvisning</li><li><code>scroll</code>: besökaren har skrollat ungefär 90 % ner</li><li><code>click</code>: klick på länkar som leder till en annan webbplats</li><li><code>file_download</code>: nedladdning av vanliga filtyper</li><li><code>view_search_results</code>: sökning på sidan, om den använder en sökparameter</li><li>Videoengagemang för inbäddade YouTube-videor och interaktion med formulär, om du har dem på.</li></ul><p>Det här räcker för en första bild. Det som är specifikt för just din verksamhet måste du mäta själv.</p>
-    </section>
-
-    <section class="block block--section" id="egna" aria-labelledby="egna-title">
-      <h2 class="block__title" id="egna-title">Egna händelser</h2>
-      <p>Skicka en egen händelse när en handling inte fångas automatiskt. Använd små bokstäver med understreck och beskrivande namn. En parameter syns i rapporterna först när du har registrerat den som en egen dimension.</p><figure class="code">
-      <figcaption class="code__bar"><span class="code__title">Skicka en egen händelse</span><span class="code__lang">JavaScript</span></figcaption>
-      <pre class="code__pre" tabindex="0"><code>document.querySelector(&#x27;#ladda-ner&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
-  gtag(&#x27;event&#x27;, &#x27;ladda_ner_guide&#x27;, {
-    guide_namn: &#x27;ga4-introduktion&#x27;
-  });
-});</code></pre>
-      <p class="code__note">Markera sedan händelsen som nyckelhändelse i Admin om den visar att något viktigt har hänt.</p>
-    </figure>
-    </section>
-
-    <section class="block block--section" id="kontrollera" aria-labelledby="kontrollera-title">
-      <h2 class="block__title" id="kontrollera-title">Kontrollera att det fungerar</h2>
-      <ol class="block__list"><li><strong>Webbläsarens utvecklarverktyg:</strong> fliken Network, filtrera på <code>collect</code>. Varje händelse är ett anrop till Google.</li><li><strong>Realtid</strong> i Analytics visar att besök kommer in inom några minuter.</li><li><strong>DebugView</strong> (Admin) visar händelser och parametrar i ordning, när felsökningsläge är på. <strong>Tag Assistant</strong> hjälper till att se vilka taggar som laddas.</li><li><strong>Vänta på standardrapporterna.</strong> De kan ligga efter med ett dygn eller mer, så ett tomt rapportfönster direkt efter installationen är normalt.</li></ol>
-    </section>
-
-    <section class="block block--section" id="tanka-pa" aria-labelledby="tanka-pa-title">
-      <h2 class="block__title" id="tanka-pa-title">Att tänka på</h2>
+    <section class="block block--section" id="exempel" aria-labelledby="exempel-title">
+      <h2 class="block__title" id="exempel-title">Tre exempel som vi återkommer till</h2>
       <ul class="examples">
-        <li class="example"><h3 class="example__title">Samtycke</h3><p>Analytics använder kakor och liknande teknik. I Sverige och EU krävs oftast samtycke först. Ladda taggen efter samtycke, eller använd <em>Consent Mode</em> så att Google får veta vad besökaren har tillåtit (för mätning är <code>analytics_storage</code> den viktiga signalen). Banderollen måste vara möjlig att använda med tangentbord och skärmläsare.</p></li>
-        <li class="example"><h3 class="example__title">Personuppgifter</h3><p>Skicka aldrig namn, e-postadress eller liknande i sidadresser eller parametrar. Google förbjuder det i sina villkor, och det är ett integritetsproblem.</p></li>
-        <li class="example"><h3 class="example__title">Lagring</h3><p>Detaljerad händelsedata sparas som standard en kort tid (två månader, kan förlängas till 14). Standardrapporter påverkas inte på samma sätt, men utforskande analyser gör det.</p></li>
-        <li class="example"><h3 class="example__title">Egen trafik</h3><p>Dina egna besök förvränger små webbplatser. Definiera intern trafik och filtrera bort den i Admin.</p></li>
-        <li class="example"><h3 class="example__title">Tolkning</h3><p>Siffror från Analytics är ett urval av besökare, inte en räkning av alla. Besökare som avböjer kakor syns inte. Jämför trender hellre än enskilda tal.</p></li>
-        </ul><p class="block__note">Det här är inte juridisk rådgivning. Vad som gäller för er verksamhet avgör ni med dataskyddsansvarig eller jurist.</p>
+        <li class="example"><h3 class="example__title">Musikspelare</h3><p>Spela, pausa och spara i en spellista. Bra för att förstå händelser och request.</p></li>
+        <li class="example"><h3 class="example__title">Webbshop</h3><p>Lägg i varukorg och gå till kassan. Bra för att förstå data, identifierare och mätning av köp.</p></li>
+        <li class="example"><h3 class="example__title">Formulär</h3><p>Fyll i, skicka och få ett svar. Bra för att förstå HTML, validering och samtycke.</p></li>
+        </ul>
     </section>
 
-    <section class="block block--section" id="search-console" aria-labelledby="search-console-title">
-      <h2 class="block__title" id="search-console-title">Koppla ihop med Search Console</h2>
-      <p>I Analytics kan du länka egendomen till Search Console (Admin → Produktlänkar → Search Console-länkar). Då kan du se hur besökare som kommer från Googles sökresultat sedan beter sig på sidan. Search Console förklaras på nästa sida.</p>
+    <section class="block block--section" id="lardomal" aria-labelledby="lardomal-title">
+      <h2 class="block__title" id="lardomal-title">Kursens fem lärandemål</h2>
+      <p>Efter kursen ska du kunna:</p><ol class="block__list"><li>Redogöra för plattformars uppbyggnad på server och klient ur ett datainsamlingsperspektiv.</li><li>Redogöra för datainsamling genom identifiering och spårning.</li><li>Redogöra för grundläggande JavaScript och dess användningsområden.</li><li>Använda grundläggande HTML.</li><li>Analysera, implementera och modifiera kod för identifiering och spårning.</li></ol>
     </section>
 
-          <nav class="page-nav" aria-label="Föregående och nästa sida"><span class="page-nav__spacer"></span><span class="page-nav__spacer"></span><a class="page-nav__link page-nav__link--next" href="search-console.html" rel="next"><span class="page-nav__dir">Nästa →</span><span class="page-nav__title">Search Console och indexering</span></a></nav>
+    <section class="block block--cards" id="moment" aria-labelledby="moment-title"><h2 class="block__title" id="moment-title">Välj ett moment</h2>
+      <div class="card-group"><h3 class="card-group__title">Bygg och förstå</h3><ul class="cards">
+          <li class="card"><h4 class="card__title"><a class="card__link" href="digitala-plattformar.html">Digitala plattformar</a></h4><p class="card__summary">Se hur klient, server och lagring samverar i en webbplats eller app.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="html-css-dom.html">HTML, CSS och DOM</a></h4><p class="card__summary">Bygg sidans delar och lär dig hur webbläsaren gör dem till något du kan undersöka.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="javascript-och-handelser.html">JavaScript och händelser</a></h4><p class="card__summary">Låt sidan reagera på klick och formulär och se vilken data som uppstår.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="http-api-network.html">HTTP, API och Network</a></h4><p class="card__summary">Förstå requests och responses och följ dem i webbläsarens Network-flik.</p></li>
+          </ul></div>
+      <div class="card-group"><h3 class="card-group__title">Samla in och förstå data</h3><ul class="cards">
+          <li class="card"><h4 class="card__title"><a class="card__link" href="cookies-och-webblasarlagring.html">Cookies och webbläsarlagring</a></h4><p class="card__summary">Jämför cookies, localStorage och sessionStorage och se vad de passar till.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="identifiering.html">Identifiering</a></h4><p class="card__summary">Se hur samma besökare eller användare kan kännas igen över flera besök.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="tracking-och-datalayer.html">Tracking och dataLayer</a></h4><p class="card__summary">Beskriv en händelse en gång i dataLayer och låt mätningen läsa den.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="taghantering.html">Tagghantering</a></h4><p class="card__summary">Styr mätning med taggar, triggers och variabler utan att ändra sidans kod varje gång.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="samtycke.html">Samtycke</a></h4><p class="card__summary">Se hur ett val av besökaren styr vad som får samlas in.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="datainsamling-klient-server.html">Datainsamling på klient och server</a></h4><p class="card__summary">Jämför vad som kan samlas in i webbläsaren och på servern.</p></li>
+          </ul></div>
+      <div class="card-group"><h3 class="card-group__title">Analytics och sökbarhet</h3><ul class="cards">
+          <li class="card"><h4 class="card__title"><a class="card__link" href="google-analytics.html">Så arbetar du med Google Analytics 4</a></h4><p class="card__summary">Mät rätt saker i rätt ordning: från fråga till installation, kontroll och rapport.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="search-console.html">Search Console och indexering</a></h4><p class="card__summary">Hur Google hittar, indexerar och visar din webbplats, och vad som påverkar det.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="tillganglighet.html">Tillgänglighet på webben</a></h4><p class="card__summary">Att alla kan uppfatta, förstå och använda sidan, och hur det hänger ihop med sökbarhet och mätning.</p></li>
+          </ul></div>
+      <div class="card-group"><h3 class="card-group__title">Arbeta praktiskt</h3><ul class="cards">
+          <li class="card"><h4 class="card__title"><a class="card__link" href="verktyg-och-arbetsflode.html">Verktyg och arbetsflöde</a></h4><p class="card__summary">Var VS Code, terminalen, localhost, DevTools och GitHub hör hemma.</p></li>
+          <li class="card"><h4 class="card__title"><a class="card__link" href="felsokning.html">Felsökning</a></h4><p class="card__summary">Ett arbetssätt för att hitta vad som faktiskt händer och rätta det.</p></li>
+          </ul></div>
+      </section>
+
+          <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
         </article>
       </main>
       <footer class="site-footer">
-        <p>Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
+        <p>S:CDD26H – Teknik för digitala plattformar. Utbildningsmaterial. Kontrollera alltid mot Googles och W3C:s aktuella dokumentation. Gränssnitt och namn ändras.</p>
       </footer>
     </div>
   </div>
 
-  <script src="js/menu.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

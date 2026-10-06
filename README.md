@@ -59,15 +59,18 @@ Inga Google-taggar och inga externa anrop finns i etapp 1. Integrationspunkterna
 
 Riktiga knappar och länkar, synlig fokusmarkering, tangentbordsstyrning, `aria-current` för aktiv sida och aktuellt flödessteg, textversion av varje flöde, etiketter som alltid har text och symbol utöver färg, och `prefers-reduced-motion` respekteras.
 
-## Enkel webbplats för GitHub Pages (rotmappen)
+## Webbplatsen (rotmappen)
 
-I rotmappen finns en enkel, statisk webbplats med tre sidor om Google Analytics, Search Console och tillgänglighet:
+Siten är ren HTML, CSS och JavaScript. Inget byggsteg och ingen Node behövs. Den publiceras med GitHub Pages på **https://scdd26ha.pulsit.online/** (domänen står i `CNAME`).
 
-- `index.html` – Google Analytics 4
-- `search-console.html` – Search Console och indexering
-- `tillganglighet.html` – tillgänglighet
-- `css/` – samma tre CSS-filer som i `src/css/` (`theme.css` styr utseendet)
-- `js/menu.js` – mobilmenyn (sidorna fungerar även utan JavaScript)
-- `sitemap.xml` – lägg till en rad för varje ny sida
+- `index.html` – översikt, och en sida per kursmoment (`*.html`)
+- `css/` – tre CSS-filer. `theme.css` styr färger, typsnitt och avstånd för hela siten
+- `js/site.js` – menyn, föregående/nästa och mobilmenyn. **Menyn är listan `MENU` överst i filen**
+- `sitemap.xml` och `robots.txt` – för sökmotorer. Adresserna ska använda `https://scdd26ha.pulsit.online/`
 
-Sidorna är vanliga HTML-filer med relativa sökvägar, så de fungerar under `/IHM-analytics/` på GitHub Pages. Aktivera Pages under *Settings → Pages → Deploy from a branch → `main` / `(root)`*. Den tidigare interaktiva siten finns kvar i `src/` och `dist/`.
+### Lägg till en ny sida
+1. Kopiera en befintlig sida, byt namn och innehåll. Ändra också `data-page` i `<body>`, `<title>`, `description` och `canonical`.
+2. Lägg en rad i `MENU` i `js/site.js`.
+3. Lägg ett kort på `index.html` och en rad i `sitemap.xml`.
+
+Visa siten lokalt med tillägget Live Server i VS Code (eller `npx http-server` om du har Node). Den tidigare interaktiva versionen finns kvar i `src/` och `dist/`.
