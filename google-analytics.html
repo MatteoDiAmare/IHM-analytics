@@ -121,6 +121,11 @@
       <p>I Analytics kan du länka egendomen till Search Console (Admin → Produktlänkar → Search Console-länkar). Då kan du se hur besökare som kommer från Googles sökresultat sedan beter sig på sidan. Search Console förklaras på <a href="search-console.html">en egen sida</a>.</p>
     </section>
 
+    <section class="block block--section" id="den-har-siten" aria-labelledby="den-har-siten-title">
+      <h2 class="block__title" id="den-har-siten-title">Så är den här siten förberedd</h2>
+      <p>Siten har en samtyckesruta och är förberedd för Google Analytics 4, men mäter ingenting förrän ett mätvärdes-ID har skrivits in.</p><ul class="block__list"><li>Besökaren väljer <strong>ja</strong> eller <strong>nej</strong> i en ruta. Valet sparas i en cookie, <code>samtycke_statistik</code>, i 180 dagar.</li><li>Google-skriptet laddas <strong>först efter ja</strong>. Före valet, och efter nej, skickas inget till Google.</li><li><em>Consent Mode</em> startar med allt nekat och uppdateras vid ja.</li><li><strong>Cookieinställningar</strong> i sidfoten öppnar rutan igen så att valet kan ändras.</li><li>Mätvärdes-ID:t står på en enda rad (<code>GA_ID</code>) i <code>js/consent.js</code>.</li></ul><p>Läs koden i <code>js/consent.js</code> och följ den med Network-fliken öppen. Det är samma mekanism som på sidan om <a href="samtycke.html">samtycke</a>.</p>
+    </section>
+
           <nav class="page-nav" id="page-nav" aria-label="Föregående och nästa sida"></nav>
         </article>
       </main>
@@ -131,5 +136,6 @@
   </div>
 
   <script src="js/site.js"></script>
+  <script src="js/consent.js"></script>
 </body>
 </html>
